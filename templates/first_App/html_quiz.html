@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>HTML - QUIZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <style media="screen">
+        html, body {
+        padding:0;
+        margin:0;
+        font-family: 'Montserrat' ;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        background-color: rgba(241, 101, 41, 0.5);
+      }
+
+      .fa {
+        /* padding: 40px; */
+        font-size: 40px;
+        position: relative;
+        left: 49%;
+        width: 10px;
+        text-align: center;
+        border-radius: 50%;
+        text-decoration: none;
+      }
+
+
+      .fa-code {
+        /* background:  #211F1F; */
+        color: #fff;
+
+
+      }
+      .sbmt{
+        position: absolute !important;
+        top: 52% !important;
+        right: 10%!important;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 30px;
+      }
+      .jumbotron-fluid{
+        position: sticky;
+        color: #fff !important;
+        background: #f16529 !important;
+      }
+
+      .card{
+
+        border-width: 5px !important;
+        border-color:  rgba(241, 101, 41) !important;
+        background: #fff!important;
+      }
+
+      .active{
+        background: #f16529 !important;
+        border-color:  rgba(241, 101, 41) !important;
+      }
+      /* .card{
+
+        border-width: 3px !important;
+        border-color:  rgba(241, 101, 41) !important;
+
+      } */
+
+      .q{
+        color :rgba(241, 101, 41) !important;
+      }
+  </style>
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #f16529;">
+      <a href="#" class="fa fa-code"></a>
+      <a class="navbar-brand" href="#">Test your skills</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+      <a href="{% url 'home' %}" class="btn btn-light ml-2 btn-sm " type="submit">Home</a>
+      <a class="btn btn-light ml-2 btn-sm" type="submit">My Scores</a>
+      <a href="{% url 'logout' %}" class="btn btn-outline-light ml-2 btn-sm" type="submit">SignOut</a>
+
+
+    </ul>
+
+
+
+        </div>
+        </nav>
+
+    <div class="sticky-top">
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <!-- <a href="#" class="fa fa-code"></a> -->
+      <h1 class="display-4">HTML</h1>
+      <p>The standard markup language for documents designed to be displayed in a web browser. </p>
+      <form  action="{% url 'submit_quiz' "html" %}" method="post">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-light ml-2 btn-sm sbmt"  value="Submit your Responses">
+    </div>
+          </div>
+  </div>
+
+
+          <div class="container">
+                {% for d in data %}
+
+                <div class="form-group">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item active">{{ forloop.counter }} : {{ d.question }} </li>
+                    <li class="list-group-item">1. {{ d.option1 }}</li>
+                    <li class="list-group-item">2. {{ d.option2 }}</li>
+                    <li class="list-group-item">3. {{ d.option3 }}</li>
+                    <li class="list-group-item">4. {{ d.option4 }}</li>
+
+                    <li class="list-group-item"><div class="form-group">
+                      <input type="text" class="form-control" name="{{ forloop.counter }}"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                    </div></li>
+                  </ul>
+
+                </div>
+
+                <br>
+                  {% endfor %}
+                </form>
+
+
+
+
+
+            </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

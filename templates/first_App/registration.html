@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>REGISTER</title>
+  <style media="screen">
+      :root {
+          --container-bg-color: #333;
+          --left-bg-color: rgba(255, 230, 240, 0.2);
+          --left-button-hover-color:rgba(204, 0, 0,0.5);
+          --hover-width: 75%;
+          --other-width: 25%;
+          --speed: 1000ms;
+    }
+      html, body {
+      padding:0;
+      margin:0;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background: url('https://images.pexels.com/photos/1029612/pexels-photo-1029612.jpeg?cs=srgb&dl=abstract-abstract-photo-architectural-architectural-design-1029612.jpg&fm=jpg') center center no-repeat;
+      background-size: cover;
+    }
+
+
+    .J{
+
+      height: 40% !important;
+      color: rgba(204, 0, 0,0.7) !important;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .F{
+      border-color: rgba(204, 0, 0,0.7) !important;
+      border-width: 7px !important;
+
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+      padding-top: 25px !important;
+      padding-bottom  : 0px !important;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .R{
+      position: absolute !important;
+      top: 23% !important;
+      left: 20% !important;
+
+    }
+
+    .btnLA {
+      display: block;
+      position: absolute;
+      left: 20%;
+      top: 62%;
+      height: 50px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      width: 15rem;
+      text-align: center;
+      color:  rgba(0, 0, 0, 0.8);
+      border: rgba(0,0,0,0.6) solid 0.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      transform: translateX(-50%);
+    }
+
+
+    .JA{
+      position: absolute !important;
+      top: 20% !important;
+      height: 40% !important;
+      width: 100% !important;
+      color: rgba(204, 0, 0,0.7) !important;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .button:hover {
+      background-color: var(--left-button-hover-color);
+      border-color: var(--left-button-hover-color);
+    }
+  </style>
+
+  </head>
+  <body>
+
+    {% if registered %}
+    <div class="jumbotron jumbotron-fluid JA">
+      <div class="container JCA">
+        <h1 class="display-4">| Thank you for Registering</h1>
+        <a href="{% url 'first_App:user_login' %}" class="button btnLA">LOGIN</a>
+      </div>
+    </div>
+    {% else %}
+    <div class="jumbotron jumbotron-fluid J">
+      <div class="container JC">
+        <h1 class="display-4">| Register Here</h1>
+      </div>
+    </div>
+    <div class="container R" style="max-width: 100%">
+      <div class="col-md-6" style="max-height: 100%">
+
+          <div class="card text-black  mb-3  F" style="max-width: 100rem">
+            <div class="card-body rounded-0">
+              <form  method="post">
+                <div class="form-group" enctype = "multipart/form-data">
+
+                  {% csrf_token %}
+                  {{ user_form.as_p}}
+                  <!-- {{ profile_form.as_p}} -->
+                  <br>
+                <input type="submit" class="btn btn-light btn-outline-info btn-lg"  value="Submit">
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>
