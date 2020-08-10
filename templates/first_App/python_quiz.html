@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>CSS-QUIZ</title>
+    <title>PYTHON - QUIZ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -15,7 +15,7 @@
         width: 100%;
         height: 100%;
         overflow-x: hidden;
-        background-color: #fff;
+        background-color: rgba(100, 100, 100, 0.5);
       }
 
       .fa {
@@ -36,22 +36,47 @@
 
 
       }
+      .sbmt{
+        position: absolute !important;
+        top: 52% !important;
+        right: 10%!important;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 30px;
+      }
       .jumbotron-fluid{
+        position: sticky;
         color: #fff !important;
-        background: #f16529 !important;
+        background: rgba(100, 100, 100) !important;
       }
 
-      .card-header{
-        background: rgba(241, 101, 41) !important;
+      .card{
+
+        border-width: 5px !important;
+        border-color:  rgba(100, 100, 100) !important;
+        background: #fff!important;
       }
+
+      .active{
+        background: rgba(100, 100, 100) !important;
+        border-color: rgba(100, 100, 100) !important;
+      }
+      /* .card{
+
+        border-width: 3px !important;
+        border-color:  rgba(241, 101, 41) !important;
+
+      } */
 
       .q{
-        color : #fff !important;
+        color :rgba(100, 100, 100) !important;
       }
   </style>
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #f16529;">
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: rgba(100, 100, 100);">
       <a href="#" class="fa fa-code"></a>
       <a class="navbar-brand" href="#">Test your skills</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +86,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
 
-      <a href="{% url 'home' %}" class="btn btn-light ml-2 btn-sm " type="submit">Home</a>
+      <a href="{% url 'stud_home' %}" class="btn btn-light ml-2 btn-sm " type="submit">Home</a>
       <a class="btn btn-light ml-2 btn-sm" type="submit">My Scores</a>
       <a href="{% url 'logout' %}" class="btn btn-outline-light ml-2 btn-sm" type="submit">SignOut</a>
 
@@ -70,74 +95,49 @@
 
 
 
-  </div>
+        </div>
         </nav>
 
-        <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <!-- <a href="#" class="fa fa-code"></a> -->
-    <h1 class="display-4">HTML</h1>
-    <p>CSS describes how HTML elements are to be displayed on screen, paper, or in other media</p>
+    <div class="sticky-top">
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <!-- <a href="#" class="fa fa-code"></a> -->
+      <h1 class="display-4">Python</h1>
+      <p>Python is an interpreted, high-level, general-purpose programming language.</p>
+      <form  action="{% url 'submit_quiz' "python" %}" method="post">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-light ml-2 btn-sm sbmt"  value="Submit your Responses">
+    </div>
+          </div>
   </div>
-        </div>
+
 
           <div class="container">
-            <div id="accordion">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                  <button class="btn q btn-collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Q1 : What is CSS?
-                  </button>
-                </h5>
-                </div>
+                {% for d in data %}
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                              <label class="form-check-label" for="defaultCheck1">
-                                Option 1
-                              </label>
-                            </div>
-                          </li>
-                          <li class="list-group-item">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                              <label class="form-check-label" for="defaultCheck1">
-                                Option 2
-                              </label>
-                            </div>
-                          </li>
-                          <li class="list-group-item">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
-                                  Option 3
-                              </label>
-                            </div>
-                          </li>
-                          <li class="list-group-item">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                              <label class="form-check-label" for="defaultCheck1">
-                                Option 4
-                              </label>
-                            </div>
-                          </li>
+                <div class="form-group">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item active">{{ forloop.counter }} : {{ d.question }} </li>
+                    <li class="list-group-item">1. {{ d.option1 }}</li>
+                    <li class="list-group-item">2. {{ d.option2 }}</li>
+                    <li class="list-group-item">3. {{ d.option3 }}</li>
+                    <li class="list-group-item">4. {{ d.option4 }}</li>
 
-                        </ul>
-                      </div>
-                    </div>
-
+                    <li class="list-group-item"><div class="form-group">
+                      <input type="text" class="form-control" name="{{ forloop.counter }}"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                    </div></li>
+                  </ul>
 
                 </div>
 
+                <br>
+                  {% endfor %}
+                </form>
 
 
-              </div>
+
+
+
             </div>
 
 

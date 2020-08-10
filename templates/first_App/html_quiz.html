@@ -86,7 +86,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
 
-      <a href="{% url 'home' %}" class="btn btn-light ml-2 btn-sm " type="submit">Home</a>
+      <a href="{% url 'stud_home' %}" class="btn btn-light ml-2 btn-sm " type="submit">Home</a>
       <a class="btn btn-light ml-2 btn-sm" type="submit">My Scores</a>
       <a href="{% url 'logout' %}" class="btn btn-outline-light ml-2 btn-sm" type="submit">SignOut</a>
 
@@ -97,14 +97,14 @@
 
         </div>
         </nav>
-
+          {% for d in data %}
     <div class="sticky-top">
     <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <!-- <a href="#" class="fa fa-code"></a> -->
       <h1 class="display-4">HTML</h1>
       <p>The standard markup language for documents designed to be displayed in a web browser. </p>
-      <form  action="{% url 'submit_quiz' "html" %}" method="post">
+      <form  action="{% url 'submit_quiz' "html" d.pk request.user.username %}" method="post">
       {% csrf_token %}
       <input type="submit" class="btn btn-light ml-2 btn-sm sbmt"  value="Submit your Responses">
     </div>
@@ -113,20 +113,65 @@
 
 
           <div class="container">
-                {% for d in data %}
+
 
                 <div class="form-group">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item active">{{ forloop.counter }} : {{ d.question }} </li>
-                    <li class="list-group-item">1. {{ d.option1 }}</li>
-                    <li class="list-group-item">2. {{ d.option2 }}</li>
-                    <li class="list-group-item">3. {{ d.option3 }}</li>
-                    <li class="list-group-item">4. {{ d.option4 }}</li>
+                    <li class="list-group-item active">Question 1 : {{ d.q1 }}</li>
+                    <li class="list-group-item">1. {{ d.q1o1 }}</li>
+                    <li class="list-group-item">2. {{ d.q1o2 }}</li>
+                    <li class="list-group-item">3. {{ d.q1o3 }}</li>
+                    <li class="list-group-item">4. {{ d.q1o4 }}</li>
 
                     <li class="list-group-item"><div class="form-group">
-                      <input type="text" class="form-control" name="{{ forloop.counter }}"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                      <input type="text" class="form-control" name="q1ans"  placeholder="Enter your option as 1 or 2 or 3 or 4">
                     </div></li>
                   </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item active">Question 2 : {{ d.q2 }}</li>
+                    <li class="list-group-item">1. {{ d.q2o1 }}</li>
+                    <li class="list-group-item">2. {{ d.q2o2 }}</li>
+                    <li class="list-group-item">3. {{ d.q2o3 }}</li>
+                    <li class="list-group-item">4. {{ d.q2o4 }}</li>
+
+                    <li class="list-group-item"><div class="form-group">
+                      <input type="text" class="form-control" name="q2ans"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                    </div></li>
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item active">Question 3 : {{ d.q3 }}</li>
+                    <li class="list-group-item">1. {{ d.q3o1 }}</li>
+                    <li class="list-group-item">2. {{ d.q3o2 }}</li>
+                    <li class="list-group-item">3. {{ d.q3o3 }}</li>
+                    <li class="list-group-item">4. {{ d.q3o4 }}</li>
+
+                    <li class="list-group-item"><div class="form-group">
+                      <input type="text" class="form-control" name="q3ans"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                    </div></li>
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item active">Question 4 : {{ d.q4 }}</li>
+                    <li class="list-group-item">1. {{ d.q4o1 }}</li>
+                    <li class="list-group-item">2. {{ d.q4o2 }}</li>
+                    <li class="list-group-item">3. {{ d.q4o3 }}</li>
+                    <li class="list-group-item">4. {{ d.q4o4 }}</li>
+
+                    <li class="list-group-item"><div class="form-group">
+                      <input type="text" class="form-control" name="q4ans"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                    </div></li>
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item active">Question 5 : {{ d.q5 }}</li>
+                    <li class="list-group-item">1. {{ d.q5o1 }}</li>
+                    <li class="list-group-item">2. {{ d.q5o2 }}</li>
+                    <li class="list-group-item">3. {{ d.q5o3 }}</li>
+                    <li class="list-group-item">4. {{ d.q5o4 }}</li>
+
+                    <li class="list-group-item"><div class="form-group">
+                      <input type="text" class="form-control" name="q5ans"  placeholder="Enter your option as 1 or 2 or 3 or 4">
+                    </div></li>
+                  </ul>
+
 
                 </div>
 

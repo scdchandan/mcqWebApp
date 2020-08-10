@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>NODEJS - QUIZ</title>
+    <title>AVAILABLE - QUIZ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -15,7 +15,7 @@
         width: 100%;
         height: 100%;
         overflow-x: hidden;
-        background-color: rgba(60, 135, 58, 0.5);
+        background-color: rgb(106, 13, 173, 0.5);
       }
 
       .fa {
@@ -49,19 +49,30 @@
       .jumbotron-fluid{
         position: sticky;
         color: #fff !important;
-        background: rgba(60, 135, 58) !important;
+        background: rgb(106, 13, 173, 1) !important;
       }
 
       .card{
 
         border-width: 5px !important;
-        border-color:  rgba(60, 135, 58) !important;
+        border-color:  rgb(106, 13, 173, 1) !important;
         background: #fff!important;
       }
 
+      .S{
+        color: #fff !important;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 30px;
+        background-color: rgb(106, 13, 173, 1) !important;
+      }
+
+
       .active{
-        background: rgba(60, 135, 58) !important;
-        border-color: rgba(60, 135, 58) !important;
+        background: rgb(106, 13, 173, 1) !important;
+        border-color: rgb(106, 13, 173, 1) !important;
       }
       /* .card{
 
@@ -71,12 +82,12 @@
       } */
 
       .q{
-        color :rgba(60, 135, 58) !important;
+        color :rgb(106, 13, 173, 1) !important;
       }
   </style>
 </head>
 <body>
-      <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: rgba(60, 135, 58);">
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: rgb(106, 13, 173, 1);">
       <a href="#" class="fa fa-code"></a>
       <a class="navbar-brand" href="#">Test your skills</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,43 +113,44 @@
     <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <!-- <a href="#" class="fa fa-code"></a> -->
-      <h1 class="display-4">NodeJS</h1>
-      <p>The standard markup language for documents designed to be displayed in a web browser. </p>
-      <form  action="{% url 'submit_quiz' "nodejs" %}" method="post">
-      {% csrf_token %}
-      <input type="submit" class="btn btn-light ml-2 btn-sm sbmt"  value="Submit your Responses">
-    </div>
-          </div>
-  </div>
+      <h1 class="display-4">Available Quizes</h1>
+      </div>
+        </div>
+        </div>
+
+        <div class="container">
+          {% for d in data %}
+          {% if d.appeared == 0 %}
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item active">{{ d.category }} Quiz : 5 Questions</li>
+            <li class="list-group-item ">
+              This test is created by : {{ d.teacher_name }}
+            </li>
+            <li class="list-group-item ">
+              {% if d.category == "html" %}
+                <a href="{% url 'first_App:html_quiz' d.pk  %}" class="btn btn-light ml-2 btn-sm S" type="submit">Continue</a>
+                {% endif %}
+              {% if d.category == "css" %}
+                <a href="{% url 'first_App:css_quiz' d.pk  %}" class="btn btn-light ml-2 btn-sm S" type="submit">Continue</a>
+                {% endif %}
+              {% if d.category == "nodejs" %}
+                <a href="{% url 'first_App:nodejs_quiz' d.pk  %}" class="btn btn-light ml-2 btn-sm S" type="submit">Continue</a>
+                {% endif %}
+              {% if d.category == "javascript" %}
+                <a href="{% url 'first_App:javascript_quiz' d.pk  %}" class="btn btn-light ml-2 btn-sm S" type="submit">Continue</a>
+                {% endif %}
+              {% if d.category == "python" %}
+                <a href="{% url 'first_App:python_quiz' d.pk  %}" class="btn btn-light ml-2 btn-sm S" type="submit">Continue</a>
+                {% endif %}
+            </li>
+          </ul>
+          <br>
+          {% endif %}
+          {% endfor %}
+        </div>
 
 
-          <div class="container">
-                {% for d in data %}
 
-                <div class="form-group">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item active">{{ forloop.counter }} : {{ d.question }} </li>
-                    <li class="list-group-item">1. {{ d.option1 }}</li>
-                    <li class="list-group-item">2. {{ d.option2 }}</li>
-                    <li class="list-group-item">3. {{ d.option3 }}</li>
-                    <li class="list-group-item">4. {{ d.option4 }}</li>
-
-                    <li class="list-group-item"><div class="form-group">
-                      <input type="text" class="form-control" name="{{ forloop.counter }}"  placeholder="Enter your option as 1 or 2 or 3 or 4">
-                    </div></li>
-                  </ul>
-
-                </div>
-
-                <br>
-                  {% endfor %}
-                </form>
-
-
-
-
-
-            </div>
 
 
 

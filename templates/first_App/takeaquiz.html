@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/afaf6d5e30.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="C:\Users\hp\AppData\Local\atom\app-1.49.0\suman.css"> -->
+    <title>lecturenotes.in</title>
+    <style media="screen">
+
+    .heading{
+      padding-top:8px;
+      color:white;
+      padding-top:90px ;
+    }
+    .card-img-top{
+      width: 70px;
+      height: 70px;
+    }
+    .container{
+      padding-top: 60px;
+    }
+    .card-footer a{
+      color: black;
+      text-decoration: none;
+    }
+
+    .C {
+      /* padding: 40px; */
+      font-size: 40px;
+      position: relative;
+      left: 49%;
+      width: 10px;
+      text-align: center;
+      border-radius: 50%;
+      text-decoration: none;
+    }
+
+
+    .fa-code {
+      /* background:  #211F1F; */
+      color: #fff;
+
+
+    }
+
+    .jumbotron-fluid{
+      position: sticky;
+      color: #fff !important;
+      background: rgb(106, 13, 173, 1) !important;
+    }
+
+    .img{
+      object-fit: cover;
+    }
+
+
+    </style>
+  </head>
+  <body style="background-color: rgb(106, 13, 173)">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: rgb(106, 13, 173, 1);">
+    <a href="#" class="C fa fa-code"></a>
+    <a class="navbar-brand" href="#">Test your skills</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav ml-auto">
+
+    <a href="{% url 'stud_home' %}" class="btn btn-light ml-2 btn-sm " type="submit">Home</a>
+    <a class="btn btn-light ml-2 btn-sm" type="submit">My Scores</a>
+    <a href="{% url 'logout' %}" class="btn btn-outline-light ml-2 btn-sm" type="submit">SignOut</a>
+
+
+  </ul>
+
+
+
+      </div>
+      </nav>
+    <div class="heading" align="center" >
+      <h1><strong>Welcome to MCQWeb</strong></h1>
+      <p>What quiz would you like to take first?Don't worry,you can always change your mind.</p>
+      <div class="container">
+
+      <div class="card-deck">
+  <div class="card">
+    <div class="hover">
+      <div>
+        <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" class="card-img-top">
+      </div>
+
+      <div class="card-footer">
+        <a href="{% url 'available_quiz' "html" request.user.username %}">HTML Quiz<i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+  <div class="card">
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" class="card-img-top">
+    </div>
+
+    <div class="card-footer">
+      <a href="{% url 'available_quiz' "css" request.user.username %}">CSS Quiz<i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+  <div class="card">
+    <div>
+      <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/nodejs-1-logo.png" class="card-img-top">
+      </div>
+
+      <div class="card-footer">
+        <a href="{% url 'available_quiz' "nodejs" request.user.username %}">NodeJS Quiz<i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+    <div class="card">
+      <div>
+        <img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/082014/js1_0.png?itok=9fCD5b30" class="card-img-top">
+      </div>
+          <div class="card-footer">
+            <a href="{% url 'available_quiz' "javascript" request.user.username %}">JavaScript Quiz<i class="fa fa-angle-right"></i></a>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/600px-Python-logo-notext.svg.png" class="card-img-top">
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'available_quiz' "python" request.user.username %}">Python Quiz<i class="fa fa-angle-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body>
+    </html>
