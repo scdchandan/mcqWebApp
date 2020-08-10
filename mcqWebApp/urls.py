@@ -24,7 +24,11 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('oauth/', include('social_django.urls', namespace='social')),
     path('home/', views.home, name='home'),
+    path('stud_home/', views.stud_home, name='stud_home'),
+    path('teacher_home/', views.teacher_home, name='teacher_home'),
     path('accounts/', include('allauth.urls')),
-    path('submit_quiz/<str:category>/', views.submit_quiz, name = 'submit_quiz'),
+    path('submit_quiz/<str:category>/<str:pk>/<str:username>/', views.submit_quiz, name = 'submit_quiz'),
+    path('create_quiz/<str:category>/<str:name>/', views.create_quiz, name = 'create_quiz'),
+    path('available_quiz/<str:category>/<str:username>/', views.available_quiz, name = 'available_quiz'),
 
 ]
